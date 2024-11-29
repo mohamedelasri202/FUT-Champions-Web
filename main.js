@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             // Create a new card
             const playerCard = document.createElement("div");
-            playerCard.className = "bg-[url('/images/badge_total_rush.webp')] h-full w-full bg-contain bg-center bg-no-repeat flex flex-col items-center mt-6 player-card";
+            playerCard.className = "bg-[url('badge_total_rush.webp')] h-full w-full bg-contain bg-center bg-no-repeat flex flex-col items-center mt-6 player-card";
             playerCard.setAttribute("data-unique-id", Date.now()); // Assign unique ID
             playerCard.innerHTML = `
                 <div>
