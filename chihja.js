@@ -33,10 +33,61 @@ document.addEventListener('DOMContentLoaded', () => {
         const physical = document.getElementById("physical").value;
 
         // Validate form inputs
-        if (!playerName || !position || !photoURL || !nationalityURL || !clubURL || !rating || !passing || !pace || !shooting || !dribbling || !defending || !physical) {
-            alert("Please fill in all fields.");
-            return;
-        }
+        document.querySelector('.bg-red-950').addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            // Validate number inputs
+            const numberInputs = document.querySelectorAll('input[type="number"]');
+            for (let input of numberInputs) {
+                const value = input.value.trim();
+                if (value === '' || isNaN(value) || value < 10 || value > 99) {
+                    alert(`${input.labels[0].textContent} must be a number between 10 and 99`);
+                    return;
+                }
+            }
+        
+            // Validate text and URL inputs
+            const textAndUrlInputs = document.querySelectorAll('input[type="text"], input[type="url"]');
+            for (let input of textAndUrlInputs) {
+                const value = input.value.trim();
+                if (value === '') {
+                    alert(`${input.labels[0].textContent} cannot be empty`);
+                    return;
+                }
+                
+                // Simple URL validation for URL inputs
+                if (input.type === 'url' && !/^https?:\/\/\S+\.\S+$/.test(value)) {
+                    alert(`Please enter a valid URL for ${input.labels[0].textContent}`);
+                    return;
+                }
+                if (input.type === 'number') {
+                    const numValue = Number(value);
+                    if (isNaN(numValue) || numValue < 10 || numValue > 99) {
+                        alert(`${label} must be a number between 10 and 99`);
+                        return;
+                    }
+                }
+        
+                if (input.type === 'url' && !/^https?:\/\/\S+\.\S+$/.test(value)) {
+                    alert(`Please enter a valid URL for ${label}`);
+                    return;
+                }
+         
+                if (!playerName || !position || !photoURL || !nationalityURL || !clubURL || !rating || !passing || !pace || !shooting || !dribbling || !defending || !physical) {
+                    alert("Please fill in all fields.");
+                    return;
+                }
+                // Store validated data
+                playerData[input.id] = value;
+            }
+        
+            // Place player in the correct position div
+            placePLayerInPosition(playerData);
+        
+            // Reset form
+            form.reset();
+        });
+       
 
         // Data to be displayed in the card
         const playerData = {
