@@ -59,36 +59,39 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             // Create a new card
             const playerCard = document.createElement("div");
-            playerCard.className = "bg-[url('/images/badge_total_rush.webp')] h-[30vh] w-full bg-contain bg-center bg-no-repeat flex flex-col items-center";
+            playerCard.className = "bg-[url('/images/badge_total_rush.webp')] h-full w-full bg-contain bg-center bg-no-repeat flex flex-col items-center mt-6";
             playerCard.innerHTML = `
-                <div class="flex flex-col items-center justify-between h-[20vh] mt-5">
-                    <div class="flex h-[15vh] items-center justify-center"> 
-                        <img src="${nationalityURL}" class="h-3 w-6 pl-2 player-nationality" alt=""> 
-                        <img src="${photoURL}" class="h-20 w-20 player-photo" alt="">
-                        <img src="${clubURL}" class="h-5 w-7 pr-3 player-club" alt="">                    
-                    </div>  
-                    <div class="flex justify-center h-4 w-[5vw] text-[13px] mt-3">
-                        <p class="text-white font-bold player-name">${playerName}</p>
-                    </div>
-                    <div class="flex flex-col">
-                        <div class="flex h-10 w-[7vw] text-[9px] justify-between text-white font-semibold mt-2">
-                            <p class="player-pace">PAC <br>${pace}</p>
-                            <p class="player-shooting">SHO <br>${shooting}</p>
-                            <p class="player-passing">PAS <br>${passing}</p>
-                            <p class="player-dribbling">DRI <br>${dribbling}</p>
-                            <p class="player-defending">DEF <br>${defending}</p>
-                            <p class="player-physical">PHY <br>${physical}</p>
-                        </div>
-                        <div>
-                            <p class="text-white text-center player-position">${Position}</p>
-                        </div>
-                        <div class="flex gap-1 text-white text-[10px] justify-center mt-3">
-                            <div><p class="modify-button cursor-pointer">Modify</p></div>
-                            <div><p class="delete-button cursor-pointer">Delete</p></div>
-                            <div><p class="play-button cursor-pointer">Play</p></div>
-                        </div>
-                    </div>
-                </div>
+               
+                <div class="" >
+                  <div class="flex flex-col items-center justify-between h-[20vh] mt-1">
+                      <div class="flex h-full items-end justify-between" > 
+                          <img src="${nationalityURL}" class="h-2 w-4 pl-2 player-nationality" alt=""> 
+                          <img src="${photoURL}" class="w-10  player-photo" alt="">
+                          <img src="${clubURL}" class="h-4 w-6 pr-3 player-club" alt="">                    
+                      </div>  
+                      <div class="flex  text-[8px] mt-">
+                          <p class="text-white font-bold player-name ">${playerName}</p>
+                      </div>
+                      <div class="flex flex-col items-center">
+                          <div class="flex h-full w-[5vw] text-[5px] justify-between text-white font-semibold mr ">
+                              <p class="player-pace">PAC <br>${pace}</p>
+                              <p class="player-shooting">SHO <br>${shooting}</p>
+                              <p class="player-passing">PAS <br>${passing}</p>
+                              <p class="player-dribbling">DRI <br>${dribbling}</p>
+                              <p class="player-defending">DEF <br>${defending}</p>
+                              <p class="player-physical">PHY <br>${physical}</p>
+                          </div>
+                          <div>
+                              <p class="text-white font-semibold flex h-full w-[7vw] text-[10px] justify-center  player-position">${Position}</p>
+                          </div>
+                          <div class="flex gap-1 text-white text-[10px] justify-center mt-3 h-fit  ">
+                              <div><p class="modify-button cursor-pointer">Modify</p></div>
+                              <div><p class="delete-button cursor-pointer">Delete</p></div>
+                              <div><p class="play-button cursor-pointer">Play</p></div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
             `;
 
             // Append the new card to the container with id "change"
