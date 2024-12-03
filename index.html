@@ -14,7 +14,7 @@
         <img src="logo-removebg-preview.png" class="w-16 h-16" alt="">
         <div class="flex flex-col justify-center mt-1">
             <ul class="flex justify-center w-24 bg-yellow-200 text-black font-bold rounded-sm h-8 pt-1">
-                <li>Log In</li>
+                <li id="showBenchButton" class="cursor-pointer">Log In</li>
             </ul>
         </div>
     </div>
@@ -31,9 +31,9 @@
         
         
       
-    <div class=" flex  lg:flex-row lg:justify-around bg-slate-100 ">
+    <div class=" flex flex-col lg:flex-row lg:justify-around bg-red-400 ">
        
-      <div id="match" class="grid  grid-rows-4  scale-[0.7] w-[40px] h-[600px] relative bg-cover bg-no-repeat p-4  ">
+      <div id="match" class="grid  grid-rows-4   w-[55vw] h-[85vh] relative bg-cover bg-no-repeat p-4  ">
         <div class="flex  ">
 
            
@@ -108,7 +108,7 @@
         
         
 
-            <div id="RW" class=" h-full     w-full bg-[url('badge_total_rush.webp')] bg-contain bg-center bg-no-repeat flex flex-col items-center "  >
+            <div id="RW" class=" h-full w-full bg-[url('badge_total_rush.webp')] bg-contain bg-center bg-no-repeat flex flex-col items-center "  >
                 <div>
                     <div class="flex flex-col items-center justify-between h-[20vh] mt-1">
                         <div class="flex h-full items-end justify-between"> 
@@ -432,7 +432,7 @@
          </div>
       </div>
  <!-- the change cards -->
-    <div class=" hidden lg:block bg-[#19181C] h-auto w-[30vw] relative mt-9 flex flex-col overflow-scroll ">
+    <div class=" md:block bg-[#19181C] h-auto w-[30vw] relative mt-9 flex flex-col overflow-scroll " id="bench">
         <div class=" flex justify-around mt-4">
          <div class="content-center w-[10vw] h-[5vh] text-white  border "> <button class="pl-2 bg-[#19181C]"  id="showFormButton">add a player</button></div>  
          <div class=" ">

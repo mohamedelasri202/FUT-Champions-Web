@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const addPlayerBtn = document.getElementById("addPlayerBtn");
     const closeBtn = document.getElementById("closeBtn");
     const changeContainer = document.getElementById("change");
+    const showBenchBTN =document.getElementById("showBenchButton");
+    const Bench =document.getElementById("bench");
 
     let editingCard = null;
 
@@ -182,6 +184,14 @@ document.addEventListener('DOMContentLoaded', () => {
         form.classList.add("hidden");
         resetForm();
     });
+
+    showBenchBTN.addEventListener('click', ()=> {
+        Bench.classList.remove("hidden");
+     
+        
+
+    })
+
 
     addPlayerBtn.addEventListener('click', (event) => {
         event.preventDefault();

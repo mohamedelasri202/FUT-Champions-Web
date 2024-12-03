@@ -1,5 +1,15 @@
-#match{
+#match {
     background-image: url(https://www.futbin.com/design2/img/static/field-bg.svg);
- width: 100%;
- height: 50%;
+    
+}
+@media (max-width: 768px){
+    #match {
+        background-image: url(https://www.futbin.com/design2/img/static/field-bg.svg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
 }
