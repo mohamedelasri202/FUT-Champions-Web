@@ -1,103 +1,3 @@
-addPlayerBtn.addEventListener('click', (event) => {
-    event.preventDefault();
-
-    // Validate the form first
-    if (!validateForm()) {
-        return; // Stop if validation fails
-    }
-
-    // Get form input values
-    const playerName = document.getElementById("Name").value;
-    const photoURL = document.getElementById("Photo").value;
-    const nationalityURL = document.getElementById("Nationality").value;
-    const clubURL = document.getElementById("club").value;
-    const Position = document.getElementById("position").value;
-    const rating = document.getElementById("rating").value;
-    const passing = document.getElementById("passing").value;
-    const pace = document.getElementById("pace").value;
-    const shooting = document.getElementById("shooting").value;
-    const dribbling = document.getElementById("dribbling").value;
-    const defending = document.getElementById("defending").value;
-    const physical = document.getElementById("physical").value;
-
-    if (editingCard) {
-        // Update existing card
-        editingCard.querySelector(".player-name").textContent = playerName;
-        editingCard.querySelector(".player-photo").src = photoURL;
-        editingCard.querySelector(".player-nationality").src = nationalityURL;
-        editingCard.querySelector(".player-club").src = clubURL;
-        editingCard.querySelector(".player-position").textContent = Position;
-        editingCard.querySelector(".player-pace").textContent = `PAC\n${pace}`;
-        editingCard.querySelector(".player-shooting").textContent = `SHO\n${shooting}`;
-        editingCard.querySelector(".player-passing").textContent = `PAS\n${passing}`;
-        editingCard.querySelector(".player-dribbling").textContent = `DRI\n${dribbling}`;
-        editingCard.querySelector(".player-defending").textContent = `DEF\n${defending}`;
-        editingCard.querySelector(".player-physical").textContent = `PHY\n${physical}`;
-
-        // Handle position change
-        const newContainer = document.getElementById(Position);
-        if (newContainer && newContainer !== editingCard.parentNode) {
-            // If the new container already has a card, move it back to the change container
-            const existingCard = newContainer.querySelector('.player-card');
-            if (existingCard) {
-                changeContainer.appendChild(existingCard);
-            }
-
-            // Move the modified card to the new position
-            newContainer.appendChild(editingCard);
-        }
-    } else {
-        // Existing logic for creating a new card
-        const playerCard = document.createElement("div");
-        playerCard.className = "bg-[url('badge_total_rush.webp')] h-full w-full bg-contain bg-center bg-no-repeat flex flex-col items-center mt-6 player-card";
-        playerCard.setAttribute("data-unique-id", Date.now()); // Assign unique ID
-        playerCard.innerHTML = `
-            <div>
-              <div class="flex flex-col items-center justify-between h-[20vh] mt-1">
-                  <div class="flex h-full items-end justify-between"> 
-                      <img src="${nationalityURL}" class="h-2 w-4 pl-2 player-nationality" alt=""> 
-                      <img src="${photoURL}" class="w-10 player-photo" alt="">
-                      <img src="${clubURL}" class="h-4 w-6 pr-3 player-club" alt="">                    
-                  </div>  
-                  <div class="flex text-[8px] mt-1">
-                      <p class="text-white font-bold player-name">${playerName}</p>
-                  </div>
-                  <div class="flex flex-col items-center">
-                      <div class="flex h-full w-[5vw] text-[5px] justify-between text-white font-semibold">
-                          <p class="player-pace">PAC <br>${pace}</p>
-                          <p class="player-shooting">SHO <br>${shooting}</p>
-                          <p class="player-passing">PAS <br>${passing}</p>
-                          <p class="player-dribbling">DRI <br>${dribbling}</p>
-                          <p class="player-defending">DEF <br>${defending}</p>
-                          <p class="player-physical">PHY <br>${physical}</p>
-                      </div>
-                      <div>
-                          <p class="text-white font-semibold flex h-full w-[7vw] text-[10px] justify-center player-position">${Position}</p>
-                      </div>
-                      <div class="flex gap-1 text-white text-[10px] justify-center mt-3 h-fit">
-                          <div><p class="modify-button cursor-pointer">Modify</p></div>
-                          <div><p class="delete-button cursor-pointer">Delete</p></div>
-                          <div><p class="play-button cursor-pointer">Play</p></div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-        `;
-
-        // Add event listeners to the new card
-        addCardButtonListeners(playerCard);
-
-        // Append the new card to the container with id "change"
-        changeContainer.appendChild(playerCard);
-    }
-
-    // Hide the form and reset it
-    form.classList.add("hidden");
-    resetForm(); // Manually reset the form fields
-    
-    // Optionally, show a success message
-    alert('Player added/updated successfully!');
-});
 document.addEventListener('DOMContentLoaded', () => {
     const showFormBtn = document.getElementById("showFormButton");
     const form = document.getElementById("myForm");
@@ -190,17 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    showFormBtn.addEventListener('click', () => {
-        form.classList.remove("hidden");
-        editingCard = null;
-        resetForm();
-    });
-
-    closeBtn.addEventListener('click', () => {
-        form.classList.add("hidden");
-        resetForm();
-    });
-
     function addCardButtonListeners(cardElement) {
         const deleteBtn = cardElement.querySelector('.delete-button');
         if (deleteBtn) {
@@ -255,32 +144,60 @@ document.addEventListener('DOMContentLoaded', () => {
                 event.stopPropagation();
                 const playerCard = event.target.closest('.player-card');
                 if (playerCard) {
-                    const positionId = playerCard.querySelector(".player-position").textContent;
-                    const destinationDiv = document.getElementById(positionId);
-                    if (destinationDiv) {
-                        const existingCard = destinationDiv.querySelector('.player-card');
-                        if (existingCard) {
-                            changeContainer.appendChild(existingCard);
-                        }
-                        destinationDiv.appendChild(playerCard);
+                    // Check if the card is already in a match position
+                    const matchDivs = document.querySelectorAll('[id^="match"]');
+                    const isInMatchDiv = Array.from(matchDivs).some(div => div.contains(playerCard));
+
+                    if (isInMatchDiv) {
+                        // If in match div, move back to change div
+                        changeContainer.appendChild(playerCard);
+                        playBtn.textContent = 'Play';
                     } else {
-                        alert(`No position found for ID "${positionId}"`);
+                        // If not in match div, move to its position
+                        const positionId = playerCard.querySelector(".player-position").textContent;
+                        const destinationDiv = document.getElementById(positionId);
+                        if (destinationDiv) {
+                            const existingCard = destinationDiv.querySelector('.player-card');
+                            if (existingCard) {
+                                changeContainer.appendChild(existingCard);
+                            }
+                            destinationDiv.appendChild(playerCard);
+                            playBtn.textContent = 'Rest';
+                        } else {
+                            alert(`No position found for ID "${positionId}"`);
+                        }
                     }
                 }
             });
         }
     }
 
+    showFormBtn.addEventListener('click', () => {
+        form.classList.remove("hidden");
+        editingCard = null;
+        resetForm();
+    });
+
+    closeBtn.addEventListener('click', () => {
+        form.classList.add("hidden");
+        resetForm();
+    });
+
     addPlayerBtn.addEventListener('click', (event) => {
         event.preventDefault();
 
-        if (!validateForm()) return;
+        // Validate the form first
+        if (!validateForm()) {
+            return; // Stop if validation fails
+        }
 
+        // Get form input values
         const playerName = document.getElementById("Name").value;
         const photoURL = document.getElementById("Photo").value;
         const nationalityURL = document.getElementById("Nationality").value;
         const clubURL = document.getElementById("club").value;
         const Position = document.getElementById("position").value;
+        const rating = document.getElementById("rating").value;
         const passing = document.getElementById("passing").value;
         const pace = document.getElementById("pace").value;
         const shooting = document.getElementById("shooting").value;
@@ -289,6 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const physical = document.getElementById("physical").value;
 
         if (editingCard) {
+            // Update existing card
             editingCard.querySelector(".player-name").textContent = playerName;
             editingCard.querySelector(".player-photo").src = photoURL;
             editingCard.querySelector(".player-nationality").src = nationalityURL;
@@ -301,17 +219,27 @@ document.addEventListener('DOMContentLoaded', () => {
             editingCard.querySelector(".player-defending").textContent = `DEF\n${defending}`;
             editingCard.querySelector(".player-physical").textContent = `PHY\n${physical}`;
 
+            // Set the play button back to 'Play' in case it was 'Rest'
+            const playBtn = editingCard.querySelector('.play-button');
+            if (playBtn) playBtn.textContent = 'Play';
+
+            // Handle position change
             const newContainer = document.getElementById(Position);
             if (newContainer && newContainer !== editingCard.parentNode) {
+                // If the new container already has a card, move it back to the change container
                 const existingCard = newContainer.querySelector('.player-card');
                 if (existingCard) {
                     changeContainer.appendChild(existingCard);
                 }
+
+                // Move the modified card to the new position
                 newContainer.appendChild(editingCard);
             }
         } else {
+            // Existing logic for creating a new card
             const playerCard = document.createElement("div");
             playerCard.className = "bg-[url('badge_total_rush.webp')] h-full w-full bg-contain bg-center bg-no-repeat flex flex-col items-center mt-6 player-card";
+            playerCard.setAttribute("data-unique-id", Date.now()); // Assign unique ID
             playerCard.innerHTML = `
                 <div>
                   <div class="flex flex-col items-center justify-between h-[20vh] mt-1">
@@ -344,11 +272,19 @@ document.addEventListener('DOMContentLoaded', () => {
                   </div>
               </div>
             `;
+
+            // Add event listeners to the new card
             addCardButtonListeners(playerCard);
+
+            // Append the new card to the container with id "change"
             changeContainer.appendChild(playerCard);
         }
 
+        // Hide the form and reset it
         form.classList.add("hidden");
-        resetForm();
+        resetForm(); // Manually reset the form fields
+        
+        // Optionally, show a success message
+        alert('Player added/updated successfully!');
     });
 });
