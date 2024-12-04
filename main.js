@@ -4,57 +4,57 @@ document.addEventListener('DOMContentLoaded', () => {
     const addPlayerBtn = document.getElementById("addPlayerBtn");
     const closeBtn = document.getElementById("closeBtn");
     const changeContainer = document.getElementById("change");
-    const showBenchBTN =document.getElementById("showBenchButton");
-    const Bench =document.getElementById("bench");
+    const showBenchBTN = document.getElementById("showBenchButton");
+    const Bench = document.getElementById("bench");
 
     let editingCard = null;
 
-    // Validation function
+    // Simplified validation function
     function validateForm() {
         const inputs = form.querySelectorAll('input');
         let isValid = true;
         const errorMessages = [];
 
+        // Remove previous error styles
         inputs.forEach(input => input.classList.remove('border-red-500'));
 
         inputs.forEach(input => {
             const value = input.value.trim();
 
+            // Basic empty check
             if (value === '') {
                 input.classList.add('border-red-500');
-                errorMessages.push(`${input.previousElementSibling.textContent} is required`);
+                errorMessages.push(`${input.name} is required`);
                 isValid = false;
                 return;
             }
 
-            if (input.type === 'url') {
-                const urlPattern = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
-                if (!urlPattern.test(value)) {
-                    input.classList.add('border-red-500');
-                    errorMessages.push(`Please enter a valid URL for ${input.previousElementSibling.textContent}`);
-                    isValid = false;
-                }
+            // Simple URL validation
+            if (input.type === 'url' && !value.startsWith('http')) {
+                input.classList.add('border-red-500');
+                errorMessages.push(`Please enter a valid URL for ${input.name}`);
+                isValid = false;
             }
 
+            // Number validation
             if (input.type === 'number') {
                 const numValue = parseFloat(value);
                 if (isNaN(numValue) || numValue < 10 || numValue > 99) {
                     input.classList.add('border-red-500');
-                    errorMessages.push(`${input.previousElementSibling.textContent} must be between 10 and 99`);
+                    errorMessages.push(`${input.name} must be between 10 and 99`);
                     isValid = false;
                 }
             }
 
-            if (input.id === 'Name') {
-                const textPattern = /^[a-zA-Z]{3,}$/;
-                if (!textPattern.test(value)) {
-                    input.classList.add('border-red-500');
-                    errorMessages.push('Name must be at least 3 letters without symbols');
-                    isValid = false;
-                }
+            // Name validation (kept simple)
+            if (input.id === 'Name' && !/^[a-zA-Z]{3,}$/.test(value)) {
+                input.classList.add('border-red-500');
+                errorMessages.push('Name must be at least 3 letters');
+                isValid = false;
             }
         });
 
+        // Position validation
         const positionSelect = document.getElementById('position');
         if (positionSelect.value === '') {
             positionSelect.classList.add('border-red-500');
@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             isValid = false;
         }
 
+        // Create or update error container
         let errorContainer = document.getElementById('errorMessages');
         if (!errorContainer) {
             errorContainer = document.createElement('div');
@@ -70,20 +71,22 @@ document.addEventListener('DOMContentLoaded', () => {
             form.insertBefore(errorContainer, form.firstChild);
         }
 
+        // Clear previous errors
         errorContainer.innerHTML = '';
 
+        // Display new errors
         if (!isValid) {
             errorMessages.forEach(message => {
                 const errorDiv = document.createElement('div');
                 errorDiv.textContent = message;
                 errorContainer.appendChild(errorDiv);
             });
-            return false;
         }
 
-        return true;
+        return isValid;
     }
 
+    // Reset form function
     const resetForm = () => {
         form.reset();
         const errorContainer = document.getElementById('errorMessages');
@@ -92,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Function to add listeners to card buttons
     function addCardButtonListeners(cardElement) {
         const deleteBtn = cardElement.querySelector('.delete-button');
         if (deleteBtn) {
@@ -110,6 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 event.stopPropagation();
                 const playerCard = event.target.closest('.player-card');
                 if (playerCard) {
+                    // Extract card details (kept same as original)
                     const playerName = playerCard.querySelector(".player-name").textContent;
                     const photoURL = playerCard.querySelector(".player-photo").src;
                     const nationalityURL = playerCard.querySelector(".player-nationality").src;
@@ -122,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const defending = playerCard.querySelector(".player-defending").textContent.split('\n')[1];
                     const physical = playerCard.querySelector(".player-physical").textContent.split('\n')[1];
 
+                    // Populate form fields
                     document.getElementById("Name").value = playerName;
                     document.getElementById("Photo").value = photoURL;
                     document.getElementById("Nationality").value = nationalityURL;
@@ -146,16 +152,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 event.stopPropagation();
                 const playerCard = event.target.closest('.player-card');
                 if (playerCard) {
-                    // Check if the card is already in a match position
+                    // Check which container the card is in
+                    const currentContainer = playerCard.closest('[id]');
+                    const changeContainer = document.getElementById("change");
                     const matchDivs = document.querySelectorAll('[id^="match"]');
-                    const isInMatchDiv = Array.from(matchDivs).some(div => div.contains(playerCard));
 
-                    if (isInMatchDiv) {
-                        // If in match div, move back to change div
-                        changeContainer.appendChild(playerCard);
-                        playBtn.textContent = 'Play';
-                    } else {
-                        // If not in match div, move to its position
+                    if (currentContainer.id === "change") {
+                        // Try to place in a match position based on the player's position
                         const positionId = playerCard.querySelector(".player-position").textContent;
                         const destinationDiv = document.getElementById(positionId);
                         if (destinationDiv) {
@@ -164,41 +167,44 @@ document.addEventListener('DOMContentLoaded', () => {
                                 changeContainer.appendChild(existingCard);
                             }
                             destinationDiv.appendChild(playerCard);
-                            playBtn.textContent = 'Rest';
                         } else {
                             alert(`No position found for ID "${positionId}"`);
                         }
+                    } else {
+                        // Move back to change container
+                        changeContainer.appendChild(playerCard);
                     }
                 }
             });
         }
     }
 
+    // Show form event listener
     showFormBtn.addEventListener('click', () => {
         form.classList.remove("hidden");
         editingCard = null;
         resetForm();
     });
 
+    // Close form event listener
     closeBtn.addEventListener('click', () => {
         form.classList.add("hidden");
         resetForm();
     });
 
-    showBenchBTN.addEventListener('click', ()=> {
-        Bench.classList.remove("hidden");
-     
+    // Show bench event listener
+    showBenchBTN.addEventListener('click', () => {
+        Bench.classList.toggle("hidden");
         
+    });
 
-    })
-
-
+    // Add player event listener
     addPlayerBtn.addEventListener('click', (event) => {
         event.preventDefault();
 
         // Validate the form first
         if (!validateForm()) {
-            return; // Stop if validation fails
+            return;
         }
 
         // Get form input values
@@ -207,7 +213,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const nationalityURL = document.getElementById("Nationality").value;
         const clubURL = document.getElementById("club").value;
         const Position = document.getElementById("position").value;
-        const rating = document.getElementById("rating").value;
         const passing = document.getElementById("passing").value;
         const pace = document.getElementById("pace").value;
         const shooting = document.getElementById("shooting").value;
@@ -215,8 +220,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const defending = document.getElementById("defending").value;
         const physical = document.getElementById("physical").value;
 
+        // Editing existing card
         if (editingCard) {
-            // Update existing card
             editingCard.querySelector(".player-name").textContent = playerName;
             editingCard.querySelector(".player-photo").src = photoURL;
             editingCard.querySelector(".player-nationality").src = nationalityURL;
@@ -229,27 +234,20 @@ document.addEventListener('DOMContentLoaded', () => {
             editingCard.querySelector(".player-defending").textContent = `DEF\n${defending}`;
             editingCard.querySelector(".player-physical").textContent = `PHY\n${physical}`;
 
-            // Set the play button back to 'Play' in case it was 'Rest'
-            const playBtn = editingCard.querySelector('.play-button');
-            if (playBtn) playBtn.textContent = 'Play';
-
             // Handle position change
             const newContainer = document.getElementById(Position);
             if (newContainer && newContainer !== editingCard.parentNode) {
-                // If the new container already has a card, move it back to the change container
                 const existingCard = newContainer.querySelector('.player-card');
                 if (existingCard) {
                     changeContainer.appendChild(existingCard);
                 }
-
-                // Move the modified card to the new position
                 newContainer.appendChild(editingCard);
             }
         } else {
-            // Existing logic for creating a new card
+            // Create new player card
             const playerCard = document.createElement("div");
-            playerCard.className = "bg-[url('badge_total_rush.webp')] h-full w-full bg-contain bg-center bg-no-repeat flex flex-col items-center mt-6 player-card";
-            playerCard.setAttribute("data-unique-id", Date.now()); // Assign unique ID
+            playerCard.className = "bg-[url('badge_total_rush.webp')] h-full w-full bg-contain bg-center bg-no-repeat flex flex-col items-center  player-card";
+            playerCard.setAttribute("data-unique-id", Date.now());
             playerCard.innerHTML = `
                 <div>
                   <div class="flex flex-col items-center justify-between h-[20vh] mt-1">
@@ -274,9 +272,9 @@ document.addEventListener('DOMContentLoaded', () => {
                               <p class="text-white font-semibold flex h-full w-[7vw] text-[10px] justify-center player-position">${Position}</p>
                           </div>
                           <div class="flex gap-1 text-white text-[10px] justify-center mt-3 h-fit">
-                              <div><p class="modify-button cursor-pointer">Modify</p></div>
-                              <div><p class="delete-button cursor-pointer">Delete</p></div>
-                              <div><p class="play-button cursor-pointer">Play</p></div>
+                              <div class="modify-button cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></div>
+                              <div class="delete-button cursor-pointer"> <i class="fa-solid fa-trash"></i></div>
+                              <div class="play-button cursor-pointer"><i class="fa-solid fa-rotate"></i></div>
                           </div>
                       </div>
                   </div>
@@ -292,9 +290,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Hide the form and reset it
         form.classList.add("hidden");
-        resetForm(); // Manually reset the form fields
+        resetForm();
         
-        // Optionally, show a success message
+        // Show success message
         alert('Player added/updated successfully!');
     });
 });

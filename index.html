@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
   
@@ -14,7 +15,7 @@
         <img src="logo-removebg-preview.png" class="w-16 h-16" alt="">
         <div class="flex flex-col justify-center mt-1">
             <ul class="flex justify-center w-24 bg-yellow-200 text-black font-bold rounded-sm h-8 pt-1">
-                <li id="showBenchButton" class="cursor-pointer">Log In</li>
+                <li id="showBenchButton" class="cursor-pointer">Bench</li>
             </ul>
         </div>
     </div>
@@ -26,225 +27,49 @@
 </header>
 
 
-    <div class=""> <img src="welcome-to-the-eco-arena.avif" class="bg-cover h-screen w-screen absolute" alt=""></div>
+    <div class=""> <img src="welcome-to-the-eco-arena.avif" class=" bg-cover h-screen w-screen absolute" alt=""></div>
    
         
         
       
-    <div class=" flex flex-col lg:flex-row lg:justify-around bg-red-400 ">
+    <div class=" flex flex-col lg:flex-row lg:justify-around ">
        
       <div id="match" class="grid  grid-rows-4   w-[55vw] h-[85vh] relative bg-cover bg-no-repeat p-4  ">
         <div class="flex  ">
 
-           
-            
-            <div  class=" h-full w-full  bg-[url('badge_total_rush.webp')] bg-contain bg-center bg-no-repeat flex flex-col items-center    "  id="LW">
-                <div>
-                    <div class="flex flex-col  items-center justify-between h-[20vh] mt-1">
-                        <div class="flex h-full items-end justify-between"> 
-                            <img src="https://cdn.sofifa.net/flags/ar.png" class="h-2 w-4 pl-2 player-nationality" alt=""> 
-                            <img src="https://cdn.sofifa.net/players/158/023/25_120.png" class="w-10 player-photo" alt="">
-                            <img src="https://cdn.sofifa.net/meta/team/239235/120.png" class="h-4 w-6 pr-3 player-club" alt="">                    
-                        </div>  
-                        <div class="flex text-[8px] mt-1">
-                            <p class="text-white font-bold player-name">M</p>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <div class="flex h-full w-[5vw] text-[5px] justify-between text-white font-semibold">
-                                <p class="player-pace">PAC <br>90</p>
-                                <p class="player-shooting">SHO <br>90</p>
-                                <p class="player-passing">PAS <br>90</p>
-                                <p class="player-dribbling">DRI <br>90</p>
-                                <p class="player-defending">DEF <br>90</p>
-                                <p class="player-physical">PHY <br>90</p>
-                            </div>
-                            <div>
-                                <p class="text-white font-semibold flex h-full w-[7vw] text-[10px] justify-center player-position">ST</p>
-                            </div>
-                            <div class="flex gap-1 text-white text-[10px] justify-center mt-3 h-fit">
-                                <div><p class="modify-button cursor-pointer">Modify</p></div>
-                                <div><p class="delete-button cursor-pointer">Delete</p></div>
-                                <div><p class="play-button cursor-pointer">Play</p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div  class=" h-full w-full   bg-contain bg-center bg-no-repeat flex flex-col items-center    "  id="LW">
+               
           </div>
         
          
                
-            <div class=" h-full w-full bg-[url('badge_total_rush.webp')] bg-contain bg-center bg-no-repeat flex flex-col items-center mb-8 "  id="ST">
-                <div>
-                    <div class="flex flex-col items-center justify-between h-[20vh] mt-1">
-                        <div class="flex h-full items-end justify-between"> 
-                            <img src="https://cdn.sofifa.net/flags/ar.png" class="h-2 w-4 pl-2 player-nationality" alt=""> 
-                            <img src="https://cdn.sofifa.net/players/158/023/25_120.png" class="w-10 player-photo" alt="">
-                            <img src="https://cdn.sofifa.net/meta/team/239235/120.png" class="h-4 w-6 pr-3 player-club" alt="">                    
-                        </div>  
-                        <div class="flex text-[8px] mt-1">
-                            <p class="text-white font-bold player-name">M</p>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <div class="flex h-full w-[5vw] text-[5px] justify-between text-white font-semibold">
-                                <p class="player-pace">PAC <br>90</p>
-                                <p class="player-shooting">SHO <br>90</p>
-                                <p class="player-passing">PAS <br>90</p>
-                                <p class="player-dribbling">DRI <br>90</p>
-                                <p class="player-defending">DEF <br>90</p>
-                                <p class="player-physical">PHY <br>90</p>
-                            </div>
-                            <div>
-                                <p class="text-white font-semibold flex h-full w-[7vw] text-[10px] justify-center player-position">ST</p>
-                            </div>
-                            <div class="flex gap-1 text-white text-[10px] justify-center mt-3 h-fit">
-                                <div><p class="modify-button cursor-pointer">Modify</p></div>
-                                <div><p class="delete-button cursor-pointer">Delete</p></div>
-                                <div><p class="play-button cursor-pointer">Play</p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class=" h-full w-full  bg-contain bg-center bg-no-repeat flex flex-col items-center mb-8 "  id="ST">
+               
           </div>
         
         
 
-            <div id="RW" class=" h-full w-full bg-[url('badge_total_rush.webp')] bg-contain bg-center bg-no-repeat flex flex-col items-center "  >
-                <div>
-                    <div class="flex flex-col items-center justify-between h-[20vh] mt-1">
-                        <div class="flex h-full items-end justify-between"> 
-                            <img src="https://cdn.sofifa.net/flags/ar.png" class="h-2 w-4 pl-2 player-nationality" alt=""> 
-                            <img src="https://cdn.sofifa.net/players/158/023/25_120.png" class="w-10 player-photo" alt="">
-                            <img src="https://cdn.sofifa.net/meta/team/239235/120.png" class="h-4 w-6 pr-3 player-club" alt="">                    
-                        </div>  
-                        <div class="flex text-[8px] mt-1">
-                            <p class="text-white font-bold player-name">M</p>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <div class="flex h-full w-[5vw] text-[5px] justify-between text-white font-semibold">
-                                <p class="player-pace">PAC <br>90</p>
-                                <p class="player-shooting">SHO <br>90</p>
-                                <p class="player-passing">PAS <br>90</p>
-                                <p class="player-dribbling">DRI <br>90</p>
-                                <p class="player-defending">DEF <br>90</p>
-                                <p class="player-physical">PHY <br>90</p>
-                            </div>
-                            <div>
-                                <p class="text-white font-semibold flex h-full w-[7vw] text-[10px] justify-center player-position">ST</p>
-                            </div>
-                            <div class="flex gap-1 text-white text-[10px] justify-center mt-3 h-fit">
-                                <div><p class="modify-button cursor-pointer">Modify</p></div>
-                                <div><p class="delete-button cursor-pointer">Delete</p></div>
-                                <div><p class="play-button cursor-pointer">Play</p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div id="RW" class=" h-full w-full  bg-contain bg-center bg-no-repeat flex flex-col items-center "  >
+               
           </div>
        
         
         
            </div>
          <div class=" flex items-center ">
-            <div class=" h-full w-full    bg-[url('badge_total_rush.webp')]   bg-contain bg-center bg-no-repeat flex flex-col items-center " id="CAM">
-                <div>
-                    <div class="flex flex-col  items-center justify-between h-[20vh] mt-1">
-                        <div class="flex h-full items-end justify-between"> 
-                            <img src="https://cdn.sofifa.net/flags/ar.png" class="h-2 w-4 pl-2 player-nationality" alt=""> 
-                            <img src="https://cdn.sofifa.net/players/158/023/25_120.png" class="w-10 player-photo" alt="">
-                            <img src="https://cdn.sofifa.net/meta/team/239235/120.png" class="h-4 w-6 pr-3 player-club" alt="">                    
-                        </div>  
-                        <div class="flex text-[8px] mt-1">
-                            <p class="text-white font-bold player-name">M</p>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <div class="flex h-full w-[5vw] text-[5px] justify-between text-white font-semibold">
-                                <p class="player-pace">PAC <br>90</p>
-                                <p class="player-shooting">SHO <br>90</p>
-                                <p class="player-passing">PAS <br>90</p>
-                                <p class="player-dribbling">DRI <br>90</p>
-                                <p class="player-defending">DEF <br>90</p>
-                                <p class="player-physical">PHY <br>90</p>
-                            </div>
-                            <div>
-                                <p class="text-white font-semibold flex h-full w-[7vw] text-[10px] justify-center player-position">ST</p>
-                            </div>
-                            <div class="flex gap-1 text-white text-[10px] justify-center mt-3 h-fit">
-                                <div><p class="modify-button cursor-pointer">Modify</p></div>
-                                <div><p class="delete-button cursor-pointer">Delete</p></div>
-                                <div><p class="play-button cursor-pointer">Play</p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class=" h-full w-full      bg-contain bg-center bg-no-repeat flex flex-col items-center " id="CAM">
+               
     </div>
       
        
-            <div class=" h-full w-full    bg-[url('badge_total_rush.webp')]   bg-contain bg-center bg-no-repeat flex flex-col items-center mb-2 " id="SDM">
-                <div>
-                    <div class="flex flex-col  items-center justify-between h-[20vh] mt-1">
-                        <div class="flex h-full items-end justify-between"> 
-                            <img src="https://cdn.sofifa.net/flags/ar.png" class="h-2 w-4 pl-2 player-nationality" alt=""> 
-                            <img src="https://cdn.sofifa.net/players/158/023/25_120.png" class="w-10 player-photo" alt="">
-                            <img src="https://cdn.sofifa.net/meta/team/239235/120.png" class="h-4 w-6 pr-3 player-club" alt="">                    
-                        </div>  
-                        <div class="flex text-[8px] mt-1">
-                            <p class="text-white font-bold player-name">M</p>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <div class="flex h-full w-[5vw] text-[5px] justify-between text-white font-semibold">
-                                <p class="player-pace">PAC <br>90</p>
-                                <p class="player-shooting">SHO <br>90</p>
-                                <p class="player-passing">PAS <br>90</p>
-                                <p class="player-dribbling">DRI <br>90</p>
-                                <p class="player-defending">DEF <br>90</p>
-                                <p class="player-physical">PHY <br>90</p>
-                            </div>
-                            <div>
-                                <p class="text-white font-semibold flex h-full w-[7vw] text-[10px] justify-center player-position">ST</p>
-                            </div>
-                            <div class="flex gap-1 text-white text-[10px] justify-center mt-3 h-fit">
-                                <div><p class="modify-button cursor-pointer">Modify</p></div>
-                                <div><p class="delete-button cursor-pointer">Delete</p></div>
-                                <div><p class="play-button cursor-pointer">Play</p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class=" h-full w-full      bg-contain bg-center bg-no-repeat flex flex-col items-center mb-2 " id="SDM">
+               
           </div>
      
       
 
-        <div class=" h-full w-full    bg-[url('badge_total_rush.webp')]   bg-contain bg-center bg-no-repeat flex flex-col items-center " id="CM">
-            <div>
-                <div class="flex flex-col  items-center justify-between h-[20vh] mt-1">
-                    <div class="flex h-full items-end justify-between"> 
-                        <img src="https://cdn.sofifa.net/flags/ar.png" class="h-2 w-4 pl-2 player-nationality" alt=""> 
-                        <img src="https://cdn.sofifa.net/players/158/023/25_120.png" class="w-10 player-photo" alt="">
-                        <img src="https://cdn.sofifa.net/meta/team/239235/120.png" class="h-4 w-6 pr-3 player-club" alt="">                    
-                    </div>  
-                    <div class="flex text-[8px] mt-1">
-                        <p class="text-white font-bold player-name">M</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="flex h-full w-[5vw] text-[5px] justify-between text-white font-semibold">
-                            <p class="player-pace">PAC <br>90</p>
-                            <p class="player-shooting">SHO <br>90</p>
-                            <p class="player-passing">PAS <br>90</p>
-                            <p class="player-dribbling">DRI <br>90</p>
-                            <p class="player-defending">DEF <br>90</p>
-                            <p class="player-physical">PHY <br>90</p>
-                        </div>
-                        <div>
-                            <p class="text-white font-semibold flex h-full w-[7vw] text-[10px] justify-center player-position">ST</p>
-                        </div>
-                        <div class="flex gap-1 text-white text-[10px] justify-center mt-3 h-fit">
-                            <div><p class="modify-button cursor-pointer">Modify</p></div>
-                            <div><p class="delete-button cursor-pointer">Delete</p></div>
-                            <div><p class="play-button cursor-pointer">Play</p></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class=" h-full w-full   bg-contain bg-center bg-no-repeat flex flex-col items-center " id="CM">
+           
       </div>
      
       
@@ -253,142 +78,26 @@
          <div class="flex  ">
           
      
-            <div class=" h-full w-full    bg-[url('badge_total_rush.webp')]   bg-contain bg-center bg-no-repeat flex flex-col items-center" id="LFB">
-                <div>
-                    <div class="flex flex-col  items-center justify-between h-[20vh] mt-1">
-                        <div class="flex h-full items-end justify-between"> 
-                            <img src="https://cdn.sofifa.net/flags/ar.png" class="h-2 w-4 pl-2 player-nationality" alt=""> 
-                            <img src="https://cdn.sofifa.net/players/158/023/25_120.png" class="w-10 player-photo" alt="">
-                            <img src="https://cdn.sofifa.net/meta/team/239235/120.png" class="h-4 w-6 pr-3 player-club" alt="">                    
-                        </div>  
-                        <div class="flex text-[8px] mt-1">
-                            <p class="text-white font-bold player-name">M</p>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <div class="flex h-full w-[5vw] text-[5px] justify-between text-white font-semibold">
-                                <p class="player-pace">PAC <br>90</p>
-                                <p class="player-shooting">SHO <br>90</p>
-                                <p class="player-passing">PAS <br>90</p>
-                                <p class="player-dribbling">DRI <br>90</p>
-                                <p class="player-defending">DEF <br>90</p>
-                                <p class="player-physical">PHY <br>90</p>
-                            </div>
-                            <div>
-                                <p class="text-white font-semibold flex h-full w-[7vw] text-[10px] justify-center player-position">ST</p>
-                            </div>
-                            <div class="flex gap-1 text-white text-[10px] justify-center mt-3 h-fit">
-                                <div><p class="modify-button cursor-pointer">Modify</p></div>
-                                <div><p class="delete-button cursor-pointer">Delete</p></div>
-                                <div><p class="play-button cursor-pointer">Play</p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class=" h-full w-full     bg-contain bg-center bg-no-repeat flex flex-col items-center" id="LFB">
+               
           </div>
 
         
       
-            <div class=" h-full w-full   bg-[url('badge_total_rush.webp')]  bg-contain bg-center bg-no-repeat flex flex-col items-center "  id="SW">
-                <div>
-                    <div class="flex flex-col  items-center justify-between h-[20vh] mt-1">
-                        <div class="flex h-full items-end justify-between"> 
-                            <img src="https://cdn.sofifa.net/flags/ar.png" class="h-2 w-4 pl-2 player-nationality" alt=""> 
-                            <img src="https://cdn.sofifa.net/players/158/023/25_120.png" class="w-10 player-photo" alt="">
-                            <img src="https://cdn.sofifa.net/meta/team/239235/120.png" class="h-4 w-6 pr-3 player-club" alt="">                    
-                        </div>  
-                        <div class="flex text-[8px] mt-1">
-                            <p class="text-white font-bold player-name">M</p>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <div class="flex h-full w-[5vw] text-[5px] justify-between text-white font-semibold">
-                                <p class="player-pace">PAC <br>90</p>
-                                <p class="player-shooting">SHO <br>90</p>
-                                <p class="player-passing">PAS <br>90</p>
-                                <p class="player-dribbling">DRI <br>90</p>
-                                <p class="player-defending">DEF <br>90</p>
-                                <p class="player-physical">PHY <br>90</p>
-                            </div>
-                            <div>
-                                <p class="text-white font-semibold flex h-full w-[7vw] text-[10px] justify-center player-position">ST</p>
-                            </div>
-                            <div class="flex gap-1 text-white text-[10px] justify-center mt-3 h-fit">
-                                <div><p class="modify-button cursor-pointer">Modify</p></div>
-                                <div><p class="delete-button cursor-pointer">Delete</p></div>
-                                <div><p class="play-button cursor-pointer">Play</p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class=" h-full w-full     bg-contain bg-center bg-no-repeat flex flex-col items-center "  id="SW">
+                
           </div>
      
 
     
-        <div class=" h-full w-full  bg-[url('badge_total_rush.webp')]  bg-contain bg-center bg-no-repeat flex flex-col items-center " id="CB">
-            <div>
-                <div class="flex flex-col  items-center justify-between h-[20vh] mt-1">
-                    <div class="flex h-full items-end justify-between"> 
-                        <img src="https://cdn.sofifa.net/flags/ar.png" class="h-2 w-4 pl-2 player-nationality" alt=""> 
-                        <img src="https://cdn.sofifa.net/players/158/023/25_120.png" class="w-10 player-photo" alt="">
-                        <img src="https://cdn.sofifa.net/meta/team/239235/120.png" class="h-4 w-6 pr-3 player-club" alt="">                    
-                    </div>  
-                    <div class="flex text-[8px] mt-1">
-                        <p class="text-white font-bold player-name">M</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="flex h-full w-[5vw] text-[5px] justify-between text-white font-semibold">
-                            <p class="player-pace">PAC <br>90</p>
-                            <p class="player-shooting">SHO <br>90</p>
-                            <p class="player-passing">PAS <br>90</p>
-                            <p class="player-dribbling">DRI <br>90</p>
-                            <p class="player-defending">DEF <br>90</p>
-                            <p class="player-physical">PHY <br>90</p>
-                        </div>
-                        <div>
-                            <p class="text-white font-semibold flex h-full w-[7vw] text-[10px] justify-center player-position">ST</p>
-                        </div>
-                        <div class="flex gap-1 text-white text-[10px] justify-center mt-3 h-fit">
-                            <div><p class="modify-button cursor-pointer">Modify</p></div>
-                            <div><p class="delete-button cursor-pointer">Delete</p></div>
-                            <div><p class="play-button cursor-pointer">Play</p></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class=" h-full w-full   bg-contain bg-center bg-no-repeat flex flex-col items-center " id="CB">
+           
       </div>
    
      
  
-        <div class=" h-full w-full  bg-[url('badge_total_rush.webp')] bg-contain bg-center bg-no-repeat flex flex-col items-center " id="RFB">
-            <div>
-                <div class="flex flex-col  items-center justify-between h-[20vh] mt-1">
-                    <div class="flex h-full items-end justify-between"> 
-                        <img src="https://cdn.sofifa.net/flags/ar.png" class="h-2 w-4 pl-2 player-nationality" alt=""> 
-                        <img src="https://cdn.sofifa.net/players/158/023/25_120.png" class="w-10 player-photo" alt="">
-                        <img src="https://cdn.sofifa.net/meta/team/239235/120.png" class="h-4 w-6 pr-3 player-club" alt="">                    
-                    </div>  
-                    <div class="flex text-[8px] mt-1">
-                        <p class="text-white font-bold player-name">M</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="flex h-full w-[5vw] text-[5px] justify-between text-white font-semibold">
-                            <p class="player-pace">PAC <br>90</p>
-                            <p class="player-shooting">SHO <br>90</p>
-                            <p class="player-passing">PAS <br>90</p>
-                            <p class="player-dribbling">DRI <br>90</p>
-                            <p class="player-defending">DEF <br>90</p>
-                            <p class="player-physical">PHY <br>90</p>
-                        </div>
-                        <div>
-                            <p class="text-white font-semibold flex h-full w-[7vw] text-[10px] justify-center player-position">ST</p>
-                        </div>
-                        <div class="flex gap-1 text-white text-[10px] justify-center mt-3 h-fit">
-                            <div><p class="modify-button cursor-pointer">Modify</p></div>
-                            <div><p class="delete-button cursor-pointer">Delete</p></div>
-                            <div><p class="play-button cursor-pointer">Play</p></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class=" h-full w-full  bg-contain bg-center bg-no-repeat flex flex-col items-center " id="RFB">
+           
       </div>
     
       
@@ -396,43 +105,14 @@
          <div class=" relative h-full w-full b    items-end" >
           
             
-        <div class=" h-full w-full bg-[url('badge_total_rush.webp')] bg-contain bg-center bg-no-repeat flex flex-col items-center  " id="GK">
-            <div>
-                <div class="flex flex-col  items-center justify-between h-[20vh] mt-1">
-                    <div class="flex h-full items-end justify-between"> 
-                        <img src="https://cdn.sofifa.net/flags/ar.png" class="h-2 w-4 pl-2 player-nationality" alt=""> 
-                        <img src="https://cdn.sofifa.net/players/158/023/25_120.png" class="w-10 player-photo" alt="">
-                        <img src="https://cdn.sofifa.net/meta/team/239235/120.png" class="h-4 w-6 pr-3 player-club" alt="">                    
-                    </div>  
-                    <div class="flex text-[8px] mt-1">
-                        <p class="text-white font-bold player-name">M</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="flex h-full w-[5vw] text-[5px] justify-between text-white font-semibold">
-                            <p class="player-pace">PAC <br>90</p>
-                            <p class="player-shooting">SHO <br>90</p>
-                            <p class="player-passing">PAS <br>90</p>
-                            <p class="player-dribbling">DRI <br>90</p>
-                            <p class="player-defending">DEF <br>90</p>
-                            <p class="player-physical">PHY <br>90</p>
-                        </div>
-                        <div>
-                            <p class="text-white font-semibold flex h-full w-[7vw] text-[10px] justify-center player-position">ST</p>
-                        </div>
-                        <div class="flex gap-1 text-white text-[10px] justify-center mt-3 h-fit">
-                            <div><p class="modify-button cursor-pointer">Modify</p></div>
-                            <div><p class="delete-button cursor-pointer">Delete</p></div>
-                            <div><p class="play-button cursor-pointer">Play</p></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class=" h-full w-full  bg-contain bg-center bg-no-repeat flex flex-col items-center  " id="GK">
+          
         </div>
       
          </div>
       </div>
  <!-- the change cards -->
-    <div class=" md:block bg-[#19181C] h-auto w-[30vw] relative mt-9 flex flex-col overflow-scroll " id="bench">
+    <div class="bg-[#19181C]  hidden  h-auto w-[30vw] relative mt-9 flex flex-col overflow-scroll " id="bench">
         <div class=" flex justify-around mt-4">
          <div class="content-center w-[10vw] h-[5vh] text-white  border "> <button class="pl-2 bg-[#19181C]"  id="showFormButton">add a player</button></div>  
          <div class=" ">
